@@ -17,4 +17,14 @@ public class Address {
     String uf;
     String complement;
     String number;
+
+    public Address(AddressData data) {
+        this.street = data.street();
+        this.neighborhood = data.neighborhood();
+        this.zipCode = data.zipCode();
+        this.city = data.city();
+        this.uf = data.uf();
+        this.complement = data.complement();
+        this.number = data.number();
+    }
 }

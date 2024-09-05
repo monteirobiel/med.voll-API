@@ -18,12 +18,20 @@ public class Doctor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-    String email;
-    String crm;
+    private String email;
+    private String crm;
 
     @Enumerated(EnumType.STRING)
     Specialty specialty;
 
     @Embedded
     Address address;
+
+    public Doctor(DoctorRegisterData data) {
+        this.name = data.name();
+        this.email = data.email();
+        this.crm = data.crm();
+        this.specialty = data.specialty();
+        this.address = new Address(data.address());
+    }
 }
