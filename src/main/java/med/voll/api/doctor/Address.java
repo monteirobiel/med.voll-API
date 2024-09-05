@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class Address {
     String street;
     String neighborhood;
-    String zipCode;
+    String zipcode;
     String city;
     String uf;
     String complement;
@@ -21,7 +21,7 @@ public class Address {
     public Address(AddressData data) {
         this.street = data.street();
         this.neighborhood = data.neighborhood();
-        this.zipCode = data.zipCode();
+        this.zipcode = data.zipCode();
         this.city = data.city();
         this.uf = data.uf();
         this.complement = data.complement();
