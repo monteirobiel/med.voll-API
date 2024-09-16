@@ -10,7 +10,7 @@ public record AddressData(
         @NotBlank
         String neighborhood,
         @NotBlank @Pattern(regexp = "\\d{8}")
-        String zipCode,
+        String zipcode,
         @NotBlank
         String city,
         @NotBlank
