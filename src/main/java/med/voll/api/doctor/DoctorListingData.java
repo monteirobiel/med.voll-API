@@ -1,6 +1,7 @@
 package med.voll.api.doctor;
 
 public record DoctorListingData(
+        Long id,
         String name,
         String email,
         String phone,
@@ -8,7 +9,7 @@ public record DoctorListingData(
         Specialty specialty) {
 
     public DoctorListingData(Doctor doctor) {
-        this(doctor.getName(), doctor.getEmail(), doctor.getPhone(), doctor.getCrm(), doctor.getSpecialty());
+        this(doctor.getId(), doctor.getName(), doctor.getEmail(), doctor.getPhone(), doctor.getCrm(), doctor.getSpecialty());
     }
 
 }
