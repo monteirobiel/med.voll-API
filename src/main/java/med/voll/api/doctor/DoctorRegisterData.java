@@ -12,6 +12,8 @@ public record DoctorRegisterData(
         @Email
         String email,
         @NotBlank
+        String phone,
+        @NotBlank
         String crm,
         @NotNull
         Specialty specialty,
