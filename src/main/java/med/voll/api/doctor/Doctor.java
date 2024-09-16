@@ -1,6 +1,7 @@
 package med.voll.api.doctor;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -35,5 +36,17 @@ public class Doctor {
         this.crm = data.crm();
         this.specialty = data.specialty();
         this.address = new Address(data.address());
+    }
+
+    public void infoUpdate(DoctorUpdateData data) {
+        if (data.name() != null) {
+            this.name = data.name();
+        }
+        if (data.phone() != null) {
+            this.phone = data.phone();
+        }
+        if (data.address() != null) {
+            this.address.infoUpdate(data.address());
+        }
     }
 }

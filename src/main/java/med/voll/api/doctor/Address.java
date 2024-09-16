@@ -21,10 +21,34 @@ public class Address {
     public Address(AddressData data) {
         this.street = data.street();
         this.neighborhood = data.neighborhood();
-        this.zipcode = data.zipCode();
+        this.zipcode = data.zipcode();
         this.city = data.city();
         this.uf = data.uf();
         this.complement = data.complement();
         this.number = data.number();
+    }
+
+    public void infoUpdate(AddressData data) {
+        if(data.street() != null) {
+            this.street = data.street();
+        }
+        if(data.neighborhood() != null) {
+            this.neighborhood = data.neighborhood();
+        }
+        if(data.zipcode() != null) {
+            this.zipcode = data.zipcode();
+        }
+        if(data.city() != null) {
+            this.city = data.city();
+        }
+        if(data.uf() != null) {
+            this.uf = data.uf();
+        }
+        if(data.complement() != null) {
+            this.complement = data.complement();
+        }
+        if(data.number() != null) {
+            this.number = data.number();
+        }
     }
 }
