@@ -1,4 +1,4 @@
-package med.voll.api.repository;
+package med.voll.api.repositories;
 
 import med.voll.api.doctor.Doctor;
 import org.springframework.data.jpa.repository.JpaRepository;
