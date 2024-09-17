@@ -37,15 +37,16 @@ public class Patient {
         this.address = new Address(data.address());
     }
 
-    public void infoUpdate(PatientRegisterData dados) {
-        if (dados.name() != null) {
-            this.name = dados.name();
+    public void infoUpdate(PatientUpdateData data) {
+        if (data.name() != null) {
+            this.name = data.name();
         }
-        if (dados.phone() != null) {
-            this.phone = dados.phone();
+        if (data.phone() != null) {
+            this.phone = data.phone();
         }
-        if (dados.address() != null) {
-            this.address.infoUpdate(dados.address());
+        if (data.address() != null) {
+            this.address.infoUpdate(data.address());
         }
+
     }
 }
