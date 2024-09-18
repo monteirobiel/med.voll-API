@@ -8,14 +8,14 @@ import jakarta.validation.constraints.Pattern;
 import med.voll.api.domain.doctor.AddressData;
 
 public record PatientRegisterData(
-        @NotBlank
+        @NotBlank(message = "Name is mandatory!")
         String name,
         @Email
         String email,
-        @NotBlank
+        @NotBlank(message = "Phone is mandatory!")
         String phone,
-        @NotBlank @Pattern(regexp = "\\d{11}")
+        @NotBlank(message = "CPF is mandatory!") @Pattern(regexp = "\\d{11}")
         String cpf,
-        @NotNull @Valid
+        @NotNull(message = "Address is mandatory!") @Valid
         AddressData address) {
 }

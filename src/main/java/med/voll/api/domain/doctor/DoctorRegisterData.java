@@ -8,16 +8,16 @@ import jakarta.validation.constraints.Pattern;
 
 public record DoctorRegisterData(
 
-        @NotBlank
+        @NotBlank(message = "Name is mandatory!")
         String name,
         @Email
         String email,
-        @NotBlank
+        @NotBlank(message = "Phone is mandatory!")
         String phone,
-        @NotBlank @Pattern(regexp = "\\d{4,6}")
+        @NotBlank(message = "CRM is mandatory!") @Pattern(regexp = "\\d{4,6}")
         String crm,
-        @NotNull
+        @NotNull(message = "Specialty is mandatory!")
         Specialty specialty,
-        @NotNull @Valid
+        @NotNull(message = "Address is mandatory!") @Valid
         AddressData address) {
 }
