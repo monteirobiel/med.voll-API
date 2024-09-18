@@ -2,14 +2,12 @@ package med.voll.api.controller;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import med.voll.api.patients.PatientListingData;
-import med.voll.api.patients.Patient;
-import med.voll.api.patients.PatientRegisterData;
-import med.voll.api.patients.PatientUpdateData;
+import med.voll.api.patients.*;
 import med.voll.api.repositories.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -26,8 +24,9 @@ public class PatientController {
     }
 
     @GetMapping
-    public Page<PatientListingData> list(Pageable pageable) {
-        return repository.findAllByActiveTrue(pageable).map(PatientListingData::new);
+    public ResponseEntity<Page<PatientListingData>> list(Pageable pageable) {
+        var page = repository.findAllByActiveTrue(pageable).map(PatientListingData::new);
+        return ResponseEntity.ok(page);
     }
 
     @PutMapping
@@ -39,8 +38,9 @@ public class PatientController {
 
     @DeleteMapping("/{id}")
     @Transactional
-    public void delete(@PathVariable long id) {
+    public ResponseEntity delete(@PathVariable long id) {
         var doctor = repository.getReferenceById(id);
         doctor.delete();
+        return ResponseEntity.noContent().build();
     }
 }
