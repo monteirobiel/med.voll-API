@@ -6,6 +6,7 @@ import med.voll.api.domain.patient.Patient;
 import med.voll.api.domain.patient.PatientListingData;
 import med.voll.api.domain.patient.PatientRegisterData;
 import med.voll.api.domain.patient.PatientUpdateData;
+import med.voll.api.domain.patient.PatientDetailData;
 import med.voll.api.repositories.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -34,9 +35,10 @@ public class PatientController {
 
     @PutMapping
     @Transactional
-    public void update (@RequestBody @Valid PatientUpdateData data) {
-        var doctor = repository.getReferenceById(data.id());
-        doctor.infoUpdate(data);
+    public ResponseEntity update (@RequestBody @Valid PatientUpdateData data) {
+        var patient = repository.getReferenceById(data.id());
+        patient.infoUpdate(data);
+        return ResponseEntity.ok(new PatientDetailData(patient));
     }
 
     @DeleteMapping("/{id}")
