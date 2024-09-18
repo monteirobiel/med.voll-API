@@ -2,6 +2,7 @@ package med.voll.api.controller;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
+import med.voll.api.domain.patient.Patient;
 import med.voll.api.patients.*;
 import med.voll.api.repositories.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;

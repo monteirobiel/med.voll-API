@@ -1,5 +1,7 @@
 package med.voll.api.doctor;
 
+import med.voll.api.domain.doctor.Doctor;
+
 public record DoctorListingData(
         Long id,
         String name,
