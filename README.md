@@ -1,106 +1,99 @@
 # API REST com Spring Boot e Spring Security usando JWT(Auth0)
 
-Este é um projeto de API REST que simula o funcionamento de uma clínica médica, com operações CRUD para gerenciar médicos e pacientes. O sistema inclui classes que representam esses usuários, e ambos possuem login e funcionalidades específicas de acordo com seus perfis. Foi desenvolvido em Java, utilizando Spring Boot e Spring Security, com autenticação e autorização stateless por meio de JWT.
-
+This is a REST API project that simulates the functioning of a medical clinic, with CRUD operations to manage doctors and patients. The system includes classes that represent these users, and both have logins and specific functionalities according to their profiles. It was developed in Java, using Spring Boot and Spring Security, with stateless authentication and authorization through JWT.
 ## Table of Contents
 
-- [Funcionalidades](#Funcionalidades)
-- [Requisitos](#Requisitos)
-- [Execução](#Execução)
+- [Features](#Features)
+- [Requirements](#Requirements)
+- [Execution](#Execution)
 - [API Endpoints](#API-Endpoints)
-- [Banco de dados](#Banco-de-dados)
+- [Database](#Database)
 
-# Funcionalidades
-- Implementação de autenticação / Autorização com Spring Security (JWT)
-- Operações CRUD como cadastrar novo medico ou paciente, atualizar dados dentre outros.
-
-# Requisitos
+# Features
+- Implementation of authentication/authorization with Spring Security (JWT)
+- CRUD operations such as registering a new doctor or patient, updating data, among others.
+# Requirements
 - Java 17 +
 - Maven
-- MySQL (configurável no arquivo `application.properties`)
-- Ferramenta de preferência para testar endpoints.
+- MySQL (configurable in the `application.properties` file)
+- Preferred tool for testing endpoints.
+# Execution
+1. Clone the repository:
 
-# Execução
-1. Faça o clone o repositório:
+```
+git clone https://github.com/monteirobiel/med.voll-API.git
+```
 
-    ```
-    git clone https://github.com/monteirobiel/med.voll-API.git
-    ```
+2. Navigate to the project directory:
 
-2. Navegue até o diretório do projeto:
+```
+cd med.voll-AP
+```
 
-    ```
-    cd med.voll-AP
-    ```
+3. Run the application using Maven:
 
-3. Execute o aplicativo usando Maven:
-
-    ```
-    mvn spring-boot:run
-    ```
-
-4. API podera ser acessada em `http://localhost:8080`.
+```
+mvn spring-boot:run
+```
+4. You can access the API through `http://localhost:8080`.
 
 # API Endpoints
 ## Login
 
 - **POST** `/login`
-    - Corpo da requisição para operação:
-      ```json
-      {
-        "username": "cpf do paciente ou crm do medico",
-        "password": "senha"
-      }
-      ```
-    - Retorna um token JWT válido para autenticações futuras.
+- Request body for operation:
+```json
+{
+"username": "patient's cpf or doctor's crm",
+"password": "password"
+}
+```
+- Returns a valid JWT token for future authentications.
 
-## Acesso restrito para Médicos
+## Restricted access for Doctors
 
 - **GET** `/doctors`
-    - Retorna informações específicas para usuários do tipo **Médico**.
+- Returns specific information for users of the **Doctor** type.
 - **POST** `/doctors`
-    - Registra as informações do tipo **Médico**.
+- Records information of the **Doctor** type.
 - **PUT** `/doctors`
-    - Corpo da requisição para operação:
+- Request body for operation:
 ```json
-      {
-        "id": "id do medico",
-        "phone": "telefone do medico"
-      }
+{
+"id": "doctor's id",
+"phone": "doctor's phone"
+}
 ```
-Atualiza informações do tipo **Médico**.
+Updates information of the **Doctor** type.
 
 - **DELETE** `/patients`
-    - Desativa o cadastro do tipo **Médico**.
+- Deactivates the **Doctor** type registration.
 
-## Acesso restrito para Pacientes
-
+## Restricted access for Patients
 
 - **GET** `/patients`
-    - Retorna informações específicas para usuários do tipo **Paciente**.
-- **POST** `/patients`
-    - Registra as informações do tipo **Paciente**.
-- **PUT** `/patients`
-    - Corpo da requisição para operação:
-```json
-      {
-        "id": "id do paciente",
-        "phone": "telefone do paciente"
-      }
-```
-Atualiza informações do tipo **Paciente**.
+- Returns specific information for **Patient** type users.
 
+- **POST** `/patients`
+- Registers the **Patient** type information.
+
+- **PUT** `/patients`
+- Request body for operation:
+```json
+{
+"id": "patient id",
+"phone": "patient phone number"
+}
+```
+Updates **Patient** type information.
 
 - **DELETE** `/patients`
-    - Desativa o cadastro do tipo **Paciente**.
-  
+- Deactivates **Patient** type registration.
+## Database
 
-## Banco de dados
+The database structure will be created automatically by Flyway, according to the migrations located in `src/main/resources/db/migration`.
 
-A estrutura do banco de dados será criada automaticamente pelo Flyway, de acordo com as migrations localizadas em `src/main/resources/db/migration`.
-
-Para fins de testes, acessa o banco de dados e execute os seguintes comandos SQL:
-
+For testing purposes, access the database and execute the following SQL commands:
 ```
 insert into users(id, username, password) values(1, '00011122233', '$2a$10$1g.8vUZgxS10V0FcORrGyOUTFroyioIPHyGSZWSQSNfe.DNQdU19C');
 insert into patients(id, name, email, cpf) values(1, 'Paciente beltrana', 'paciente@email.com.br', '00011122233');
@@ -109,4 +102,4 @@ insert into users(id, username, password) values(2, '112233', '$2a$10$1g.8vUZgxS
 insert into doctors(id, name, email, crm) values(2, 'Medico fulano', 'medico@email.com.br', '112233');
 ```
 
-Será inserido um médico com CRM (username): **112233** e senha **123456**. Também será inserido um paciente com CPF (username): **00011122233** e senha **123456**
+A doctor with CRM (username): **112233** and password **123456** will be entered. A patient with CPF (username): **00011122233** and password **123456** will also be entered.
