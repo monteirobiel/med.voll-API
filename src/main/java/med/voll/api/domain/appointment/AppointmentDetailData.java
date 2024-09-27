@@ -7,5 +7,5 @@ public record AppointmentDetailData(
         Long id,
         Long idPatient,
         String idDoctor,
-        LocalDateTime dateTime) {
+        LocalDateTime date) {
 }

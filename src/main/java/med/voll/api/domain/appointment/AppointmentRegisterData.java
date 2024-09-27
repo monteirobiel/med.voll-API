@@ -13,5 +13,5 @@ public record AppointmentRegisterData(
 
         @NotNull
         @Future
-        LocalDateTime dateTime) {
+        LocalDateTime date) {
 }
